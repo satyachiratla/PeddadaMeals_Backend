@@ -14,9 +14,14 @@ const app = express();
 
 app.use(express.json());
 
+const allowedDomains = [
+  "http://localhost:3000",
+  "https://peddadameals.vercel.app/",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: allowedDomains,
     credentials: true,
     methods: ["GET", "POST", "PATCH", "DELETE"],
     allowedHeaders: [
