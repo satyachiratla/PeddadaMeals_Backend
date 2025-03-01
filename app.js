@@ -21,7 +21,13 @@ const allowedDomains = [
 
 app.use(
   cors({
-    origin: allowedDomains,
+    origin: (origin, callback) => {
+      if (!origin || allowedDomains.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PATCH", "DELETE"],
     allowedHeaders: [
