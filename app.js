@@ -17,6 +17,7 @@ app.use(express.json());
 const allowedDomains = [
   "http://localhost:3000",
   "https://peddadameals.vercel.app",
+  "https://foodmunchh.vercel.app",
 ];
 
 app.use(
